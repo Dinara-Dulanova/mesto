@@ -3,7 +3,7 @@
 }
 
 @media screen and (max-width: 500px) {
-  .profile-info__description_user {
+  .profile-info__description-user {
     text-align: center;
     padding-top: 26px;
   }
