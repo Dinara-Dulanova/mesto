@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MESTO</title>
+  <link rel="stylesheet" href="./pages/index.css">
+</head>
+<body class ="page">
+    <header class="header"> 
+      <div class="header__logo"></div>
+    </header>
+
+    <main class="content">
+      <section class="profile">
+        <div class="profile-info">
+          <img src="./images/Avatar.png" alt="изображение фотографии пользователя Жака ив Кусто" class="profile-info__avatar">
+          <div class="profile-info__description">
+            <span class="profile-info__description_user">
+              <h1 class="profile-info__name">Жак-Ив Кусто</h1>   
+              <h2 class="profile-info__job">Исследователь океана</h1>
+            </span>
+            <button class="profile-info__edit-button">
+              <img src="./images/profile_edit_button.svg" alt="изображение карандаша для редактирования профиля" class="profile-info__edit-button_icon">
+            </button>
+          </div>
+        </div>
+        <button class="add-button" type="button">
+          <img src="./images/plus_button.svg" alt="кнопка плюс">
+        </button>
+      </section>
+
+      <section class="elements">
+        <div class="element">
+          <img class="element__image" src="./images/carachaevsk.png" alt="замок в горах в Карачаевске">
+          <div class="element__title">
+            <h2 class="element__text">Карачаевск</h4>
+            <img class="element__like element__like_active" src="./images/like_image.svg">
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" src="./images/elbrus.png" alt="Поле и на заднем плане 2 вершины горы Эльбрус">
+          <div class="element__title">
+            <h2 class="element__text">Гора Эльбрус</h4>
+            <img class="element__like" src="./images/like_image.svg">
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" src="./images/dombai.svg" alt="за лесом на склоне видны заснеженные скалистые горы Домбай">
+          <div class="element__title">
+            <h2 class="element__text">Домбай</h4>
+            <img class="element__like" src="./images/like_image.svg">
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" src="./images/carachaevsk.png" alt="замок в горах в Карачаевске">
+          <div class="element__title">
+            <h2 class="element__text">Карачаевск</h4>
+            <img class="element__like" src="./images/like_image.svg">
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" src="./images/carachaevsk.png" alt="замок в горах в Карачаевске">
+          <div class="element__title">
+            <h2 class="element__text">Карачаевск</h4>
+            <img class="element__like" src="./images/like_image.svg">
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" src="./images/carachaevsk.png" alt="замок в горах в Карачаевске">
+          <div class="element__title">
+            <h2 class="element__text">Карачаево-Черкесская Респ</h4>
+            <img class="element__like" src="./images/like_image.svg">
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+    </footer>
+
+    <div class="popup">
+      <div class="popup__container">
+        <button type="button" class="popup__close">
+          <img src="./images/Close_popup.svg" alt="Крестик для закрытия модального окна редактирования профиля" class="popup__close_img">
+        </button>
+          <h1 class="popup__title">Редактировать профиль</h1>
+        <form class="popup__form">
+          <div class="popup__inputs">
+            <input type="text" id="popup__name" name="popup__name" class="popup__inputs-text" value="">
+            <input type="text" id="popup__job" name="popup__job" class="popup__inputs-text" value="">
+          </div>
+          <button class="popup__button-save popup__button-text" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+<script src="./scripts/index.js" defer></script>
+</body>
+</html>

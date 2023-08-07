@@ -1,0 +1,13 @@
+.profile-info {
+  outline: 1px solid rgb(111, 111, 235);
+  min-height: 73px;
+  display: flex;
+  color: #FFFFFF;
+  align-items: center;
+}
+
+@media screen and (max-width: 500px) {
+  .profile-info {
+    flex-direction: column;
+  }
+}

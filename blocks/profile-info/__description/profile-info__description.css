@@ -1,0 +1,6 @@
+.profile-info__description {
+  display: flex;
+  padding-left: 30px;
+  min-height: 73px;
+  max-width: 336px;
+}

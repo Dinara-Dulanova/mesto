@@ -1,0 +1,31 @@
+.popup__button-save {
+  display: block;
+  background-color: #000000;
+  border: 0;
+  border-radius: 2px;
+  width: calc(100% - 72px);
+  height: 50px;
+  padding: 0;
+  margin: 48px auto 37px;
+  cursor: url(../../../images/cursor.png), pointer;
+}
+
+.popup__button-save:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 700px ) {
+  .popup__button-save {
+    width: calc(100% - 60px);
+    height: 48px; 
+    margin: 46px auto 30px;
+  }
+}
+
+@media screen and (max-width: 500px ) {
+    .popup__button-save {
+      width: calc(100% - 44px);
+      height: 46px; 
+      margin: 45px auto 25px;
+    }
+  }
