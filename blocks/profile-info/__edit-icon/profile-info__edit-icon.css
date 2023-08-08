@@ -1,0 +1,15 @@
+.profile-info__edit-icon {
+  width: 10px;
+  height: 10px;
+  object-fit: contain;
+  background-size: 100%;
+  display: block;
+  margin: 0 auto 0;
+}
+
+@media screen and (max-width: 500px) {
+  .profile-info__edit-icon {
+    width: 7.5px;
+    height: 7.5px;
+  }
+}

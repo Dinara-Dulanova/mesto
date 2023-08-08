@@ -6,95 +6,106 @@
   <title>MESTO</title>
   <link rel="stylesheet" href="./pages/index.css">
 </head>
-<body class ="page">
-    <header class="header"> 
-      <div class="header__logo"></div>
-    </header>
+<body class="page">
+  <header class="header"> 
+    <div class="header__logo"></div>
+  </header>
 
-    <main class="content">
-      <section class="profile">
-        <div class="profile-info">
-          <img src="./images/Avatar.png" alt="изображение фотографии пользователя Жака ив Кусто" class="profile-info__avatar">
-          <div class="profile-info__description">
-            <span class="profile-info__description-user">
-              <h1 class="profile-info__name">Жак-Ив Кусто</h1>   
-              <h2 class="profile-info__job">Исследователь океана</h2>
-            </span>
-            <button class="profile-info__edit-button">
-              <img src="./images/profile_edit_button.svg" alt="изображение карандаша для редактирования профиля" class="profile-info__icon">
-            </button>
+  <main class="content">
+    <section class="profile">
+      <div class="profile-info">
+        <img src="./images/Avatar.png" alt="изображение фотографии пользователя Жака ив Кусто" class="profile-info__avatar">
+        <div class="profile-info__description">
+          <div class="profile-info__description-user">
+            <h1 class="profile-info__name">Жак-Ив Кусто</h1>   
+            <p class="profile-info__job">Исследователь океана</p>
           </div>
+          <button class="profile-info__edit-button" type="button">
+            <img src="./images/profile_edit_button.svg" alt="изображение карандаша для редактирования профиля" class="profile-info__edit-icon">
+          </button>
         </div>
-        <button class="add-button" type="button">
-          <img src="./images/plus_button.svg" alt="кнопка плюс">
-        </button>
-      </section>
-
-      <section class="elements">
-        <div class="element">
-          <img class="element__image" src="./images/carachaevsk.png" alt="замок в горах в Карачаевске">
-          <div class="element__title">
-            <h2 class="element__text">Карачаевск</h2>
-            <img class="element__like element__like_active" src="./images/like_image.svg">
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/elbrus.png" alt="Поле и на заднем плане 2 вершины горы Эльбрус">
-          <div class="element__title">
-            <h2 class="element__text">Гора Эльбрус</h2>
-            <img class="element__like" src="./images/like_image.svg">
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/dombai.svg" alt="за лесом на склоне видны заснеженные скалистые горы Домбай">
-          <div class="element__title">
-            <h2 class="element__text">Домбай</h2>
-            <img class="element__like" src="./images/like_image.svg">
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/carachaevsk.png" alt="замок в горах в Карачаевске">
-          <div class="element__title">
-            <h2 class="element__text">Карачаевск</h2>
-            <img class="element__like" src="./images/like_image.svg">
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/carachaevsk.png" alt="замок в горах в Карачаевске">
-          <div class="element__title">
-            <h2 class="element__text">Карачаевск</h2>
-            <img class="element__like" src="./images/like_image.svg">
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/carachaevsk.png" alt="замок в горах в Карачаевске">
-          <div class="element__title">
-            <h2 class="element__text">Карачаево-Черкесская Респ</h2>
-            <img class="element__like" src="./images/like_image.svg">
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
-    </footer>
-
-    <div class="popup">
-      <div class="popup__container">
-        <button type="button" class="popup__close">
-          <img src="./images/Close_popup.svg" alt="Крестик для закрытия модального окна редактирования профиля" class="popup__close-img">
-        </button>
-          <h1 class="popup__title">Редактировать профиль</h1>
-        <form class="popup__form">
-          <div class="popup__inputs">
-            <input type="text" id="popup__name" name="popup__name" class="popup__inputs-text" value="">
-            <input type="text" id="popup__job" name="popup__job" class="popup__inputs-text" value="">
-          </div>
-          <button class="popup__button-save popup__button-text" type="submit">Сохранить</button>
-        </form>
       </div>
+      <button class="profile__add-button" type="button">
+        <img src="./images/plus_button.svg" alt="кнопка плюс" class="profile__plus-icon">
+      </button>
+    </section>
+
+    <section class="elements">
+      <div class="element">
+        <img class="element__image" src="./images/carachaevsk.png" alt="замок в горах в Карачаевске">
+        <div class="element__title">
+          <h2 class="element__text">Карачаевск</h2>
+          <button class="element__button-like" type="button">
+            <img class="element__like element__like_active" src="./images/like_image.svg" alt="сердечко для лайка">
+          </button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/elbrus.png" alt="Поле и на заднем плане 2 вершины горы Эльбрус">
+        <div class="element__title">
+          <h2 class="element__text">Гора Эльбрус</h2>
+          <button class="element__button-like" type="button">
+            <img class="element__like element__like_active" src="./images/like_image.svg" alt="сердечко для лайка">
+          </button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/dombai.svg" alt="за лесом на склоне видны заснеженные скалистые горы Домбай">
+        <div class="element__title">
+          <h2 class="element__text">Домбай</h2>
+          <button class="element__button-like" type="button">
+            <img class="element__like element__like_active" src="./images/like_image.svg" alt="сердечко для лайка">
+          </button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/carachaevsk.png" alt="замок в горах в Карачаевске">
+        <div class="element__title">
+          <h2 class="element__text">Карачаевск</h2>
+          <button class="element__button-like" type="button">
+            <img class="element__like element__like_active" src="./images/like_image.svg" alt="сердечко для лайка">
+          </button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/carachaevsk.png" alt="замок в горах в Карачаевске">
+        <div class="element__title">
+          <h2 class="element__text">Карачаевск</h2>
+          <button class="element__button-like" type="button">
+            <img class="element__like element__like_active" src="./images/like_image.svg" alt="сердечко для лайка">
+          </button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/carachaevsk.png" alt="замок в горах в Карачаевске">
+        <div class="element__title">
+          <h2 class="element__text">Карачаево-Черкесская Респ</h2>
+          <button class="element__button-like" type="button">
+            <img class="element__like element__like_active" src="./images/like_image.svg" alt="сердечко для лайка">
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+  </footer>
+
+  <div class="popup">
+    <div class="popup__container">
+      <button class="popup__close" type="button">
+        <img src="./images/Close_popup.svg" alt="Крестик для закрытия модального окна редактирования профиля" class="popup__close-img">
+      </button>
+      <h1 class="popup__title">Редактировать профиль</h1>
+      <form name="form-edit" class="popup__form">
+        <input type="text" id="popup__name" class="popup__inputs-text popup__name" value="" placeholder="Имя">
+        <input type="text" id="popup__job" class="popup__inputs-text popup__job" value="" placeholder="О себе">
+        <button class="popup__button-save popup__button-text" type="submit">Сохранить</button>
+      </form>
     </div>
-<script src="./scripts/index.js" defer></script>
+  </div>
+
+  <script src="./scripts/index.js" defer></script>
 </body>
 </html>
