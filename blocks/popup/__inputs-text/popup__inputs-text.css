@@ -9,7 +9,12 @@
   min-height: 27px;
   padding: 0;
   border:0;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   align-self: center;
   outline: none;
+  margin-bottom: 30px;
+}
+
+.popup__inputs-text:last-of-type {
+  margin-bottom: 48px;
 }

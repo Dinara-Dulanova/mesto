@@ -1,9 +1,11 @@
 .element__button-like {
   border: none;
-  background-color: #FFFFFF;
   height: 19px;
-  padding: auto;
+  width: 22px;
+  padding: 0;
+  margin-right: 5px;
   cursor: pointer;
+  background: url(../../../images/like_image.svg) no-repeat;
 }
 
 .element__button-like:hover {
