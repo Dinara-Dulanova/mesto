@@ -31,6 +31,7 @@
     </section>
 
     <section class="elements">
+        <!--
       <div class="element">
         <img class="element__image" src="./images/carachaevsk.png" alt="замок в горах в Карачаевске">
         <div class="element__title">
@@ -73,6 +74,7 @@
           <button class="element__button-like" type="button"></button>
         </div>
       </div>
+      -->
     </section>
   </main>
 
@@ -80,20 +82,55 @@
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
 
-  <div class="popup">
+  <div class="popup popup__edit">
     <div class="popup__container">
-      <button class="popup__close" type="button">
+      <button class="popup__close popup__close_edit" type="button">
         <img src="./images/Close_popup.svg" alt="Крестик для закрытия модального окна редактирования профиля" class="popup__close-img">
       </button>
       <h3 class="popup__title">Редактировать профиль</h3>
       <form name="form-edit" class="popup__form">
         <input type="text" id="popup__name" class="popup__inputs-text" value="" placeholder="Имя">
         <input type="text" id="popup__job" class="popup__inputs-text" value="" placeholder="О себе">
-        <button class="popup__button-save popup__button-text" type="submit">Сохранить</button>
+        <button class="popup__button popup__button-save popup__button-text" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
 
+  <div class="popup popup__add-card">
+    <div class="popup__container">
+      <button class="popup__close popup__close_add-card" type="button">
+        <img src="./images/Close_popup.svg" alt="Крестик для закрытия модального окна редактирования профиля" class="popup__close-img">
+      </button>
+      <h3 class="popup__title">Новое место</h3>
+      <form name="form-add" class="popup__form popup__form-add">
+        <input type="text" id="popup__name-card" class="popup__inputs-text" value="" placeholder="Название">
+        <input type="text" id="popup__link-card" class="popup__inputs-text" value="" placeholder="Ссылка на картинку">
+        <button class="popup__button popup__button-create popup__button-text" type="submit">Создать</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup__open-image">
+    <div class="popup__container_image">
+      <button class="popup__close popup__close_open-card" type="button">
+        <img src="./images/Close_popup.svg" alt="Крестик для закрытия модального окна редактирования профиля" class="popup__close-img">
+      </button>
+      <img class="popup__image">
+      <div class="popup__image-title"></div>
+    </div>
+  </div>
+
+  <template class="elementTemplate">
+    <div class="element">
+      <img class="element__image">
+      <div class="element__title">
+        <h2 class="element__text"></h2>
+        <button class="element__button-like" type="button"></button>
+      </div>
+      <button class="element__button-delete" type="button"></button>
+    </div>
+  </template>
+  
   <script src="./scripts/index.js" defer></script>
 </body>
 </html>
