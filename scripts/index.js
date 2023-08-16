@@ -55,7 +55,7 @@ render();
 
 /*открытие попапа при клике на кнопку для добавления карточки*/
 const popupAddCardOpenButton = document.querySelector('.profile__add-button');
-const popupAddCard = document.querySelector('.popup__add-card');
+const popupAddCard = document.querySelector('.popup-add');
 
 function showPopup(popup) { ////универсальная фунция открытия передаваемого попапа
   popup.classList.add('popup_opened');
@@ -119,7 +119,7 @@ function showImagePopup(popup, imageTitle, imageSrc) {
 }
 
 /*функция, которая реагирует на клик по картинке чтобы открыть попап с определенной картинкой*/
-const popupOpenImage = document.querySelector('.popup__open-image');
+const popupOpenImage = document.querySelector('.popup-image');
 function openCard(event) {
   const currentCard = event.target.closest('.element');
   const currentCardImageSrc = currentCard.querySelector('.element__image').src ;
@@ -133,7 +133,7 @@ popupCardCloseButton.addEventListener('click', () => closePopup(popupOpenImage))
 
 /*открытие попапа при клике на кнопку редактирования профиля*/
 const popupOpenButton = document.querySelector('.profile-info__edit-button');
-const editPopup = document.querySelector('.popup__edit');
+const editPopup = document.querySelector('.popup-edit');
 const popupUserName = document.getElementById('popup__name');
 const popupUserJob = document.getElementById('popup__job');
 
