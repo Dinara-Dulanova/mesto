@@ -42,7 +42,7 @@ function createCard(name, link) {
 }
 
 /*создаем массив карточек по шаблону*/
-let cardArray = initialCards.map(function createCardArray(item) {
+const cardArray = initialCards.map(function createCardArray(item) {
   return createCard(item.name, item.link);
 })
 
@@ -131,7 +131,7 @@ function openCard(event) {
   const currentCardImageTitle = currentCard.querySelector('.element__text').textContent;
   showImagePopup(popupOpenImage, currentCardImageTitle, currentCardImageSrc)
 }
- 
+
 /*открытие попапа при клике на кнопку редактирования профиля*/
 const popupOpenButton = document.querySelector('.profile-info__edit-button');
 const editPopup = document.querySelector('.popup-edit');
