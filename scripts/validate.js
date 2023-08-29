@@ -41,11 +41,6 @@ function setEventListener(formElement, config) {
       checkInputValidity(inputElement, formElement, config);
     })
   })
-
-  formElement.addEventListener('submit', function(evt) {
-    evt.preventDefault();
-    console.log('submit');
-  })
 }
 
 //находим все формы

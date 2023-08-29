@@ -54,11 +54,13 @@ const popupAddCardOpenButton = document.querySelector('.profile__add-button');
 const popupAddCard = document.querySelector('.popup-add');
   
 function showPopup(popup) { ////универсальная фунция открытия передаваемого попапа
+  document.addEventListener('keydown', closePopupOnEsc);
   popup.classList.add('popup_opened');
 }
 popupAddCardOpenButton.addEventListener('click', () => showPopup(popupAddCard));
   
 function closePopup(popup) { //универсальная фунция закрытия передаваемого попапа
+  document.removeEventListener('keydown', closePopupOnEsc);
   popup.classList.remove('popup_opened');
 }
 
@@ -91,8 +93,6 @@ function closePopupOnEsc(event) {
   }
 }
 
-document.addEventListener('keydown', closePopupOnEsc);
-
 /*кнопка добавления новой карточки*/
 const popupAddCardForm = document.querySelector('.popup__form-add')
 const createCardButton = document.querySelector('.popup__button-create');
@@ -102,7 +102,7 @@ const cardLinkInput = document.getElementById('popup__link-card');
 function submitCard(evt) {
   evt.preventDefault();
   const newCard = createCard(cardNameInput.value, cardLinkInput.value);
-  cardsSection.prepend(newCard); 
+  cardsSection.prepend(newCard);
   closePopup(popupAddCard);
  // createCardButton.setAttribute("disabled", ""); //чтобы атрибут не удалялся после добавления первой карточки
   evt.target.reset();
@@ -157,7 +157,7 @@ function openCard(event) {
 }
 
 /*открытие попапа при клике на кнопку редактирования профиля*/
-const EditPopupOpenButton = document.querySelector('.profile-info__edit-button');
+const editPopupOpenButton = document.querySelector('.profile-info__edit-button');
 const editPopup = document.querySelector('.popup-edit');
 const popupUserName = document.getElementById('popup__name');
 const popupUserJob = document.getElementById('popup__job');
@@ -166,14 +166,14 @@ const userName = document.querySelector('.profile-info__name');
 const userJob = document.querySelector('.profile-info__job');
   
 function showEditPopup(popup) {
-  showPopup(popup);
   popupUserName.value = userName.textContent;
   popupUserJob.value = userJob.textContent;
+  showPopup(popup);
 }
-EditPopupOpenButton.addEventListener('click',() => showEditPopup(editPopup));
+editPopupOpenButton.addEventListener('click',() => showEditPopup(editPopup));
   
 /*кнопка сохранить значения попапа*/
-const popupForm = document.querySelector('.popup__form-edit');
+const popupEditForm = editPopup.querySelector('.popup__form-edit');
 
 function savePopup (evt) {
   evt.preventDefault();
@@ -181,4 +181,4 @@ function savePopup (evt) {
   userJob.textContent = popupUserJob.value;
   closePopup(editPopup);
 }
-popupForm.addEventListener('submit', savePopup);
+popupEditForm.addEventListener('submit', savePopup);
