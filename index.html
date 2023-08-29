@@ -37,35 +37,39 @@
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
 
-  <div class="popup popup-edit">
+  <div class="popup popup-edit overlay">
     <div class="popup__container">
       <button class="popup__close popup__close_edit" type="button">
         <img src="./images/Close_popup.svg" alt="Крестик для закрытия модального окна редактирования профиля" class="popup__close-img">
       </button>
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form name="form-edit" class="popup__form">
-        <input type="text" id="popup__name" class="popup__inputs-text" value="" placeholder="Имя">
-        <input type="text" id="popup__job" class="popup__inputs-text" value="" placeholder="О себе">
+      <form name="form-edit" class="popup__form popup__form-edit" novalidate>
+        <input name="name" type="text" id="popup__name" class="popup__input" value="" placeholder="Имя" minlength="2" maxlength="40" required>
+        <span id="name-error" class="error"></span>
+        <input name="about" type="text" id="popup__job" class="popup__input" value="" placeholder="О себе" minlength="2" maxlength="200" required>
+        <span id="about-error" class="error"></span>
         <button class="popup__button popup__button-save popup__button-text" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
 
-  <div class="popup popup-add">
+  <div class="popup popup-add overlay">
     <div class="popup__container">
       <button class="popup__close popup__close_add-card" type="button">
         <img src="./images/Close_popup.svg" alt="Крестик для закрытия модального окна редактирования профиля" class="popup__close-img">
       </button>
       <h3 class="popup__title">Новое место</h3>
-      <form name="form-add" class="popup__form popup__form-add">
-        <input type="text" id="popup__name-card" class="popup__inputs-text" value="" placeholder="Название">
-        <input type="text" id="popup__link-card" class="popup__inputs-text" value="" placeholder="Ссылка на картинку">
-        <button class="popup__button popup__button-create popup__button-text" type="submit">Создать</button>
+      <form name="form-add" class="popup__form popup__form-add" novalidate>
+        <input name="cardName" type="text" id="popup__name-card" class="popup__input" value="" placeholder="Название" minlength="2" maxlength="30" required>
+        <span id="cardName-error" class="error"></span>
+        <input name="cardUrl" type="url" id="popup__link-card" class="popup__input" value="" placeholder="Ссылка на картинку" required>
+        <span id="cardUrl-error" class="error"></span>
+        <button class="popup__button popup__button-create popup__button-text" type="submit" disabled>Создать</button>
       </form>
     </div>
   </div>
 
-  <div class="popup popup-image">
+  <div class="popup popup-image overlay">
     <div class="popup-image__container">
       <button class="popup__close popup__close_open-card" type="button">
         <img src="./images/Close_popup.svg" alt="Крестик для закрытия модального окна редактирования профиля" class="popup__close-img">
@@ -87,5 +91,6 @@
   </template>
   
  <script src="./scripts/index.js" defer></script>
+ <script src="./scripts/validate.js" defer></script>
 </body>
 </html>

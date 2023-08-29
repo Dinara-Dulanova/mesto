@@ -62,14 +62,36 @@ function closePopup(popup) { //универсальная фунция закр�
   popup.classList.remove('popup_opened');
 }
 
-// находим все крестики проекта по универсальному селектору
+// находим все крестики и овелеи проекта по универсальному селектору
 const closeButtons = document.querySelectorAll('.popup__close');
+const overlay = document.querySelectorAll('.overlay');
 
-// универсальный обработчик закрытия попапов
+// универсальный обработчик закрытия попапов при клике на кнопку крестик
 closeButtons.forEach((button) => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
+
+// универсальный обработчик закрытия попапов при клике на оверлей
+overlay.forEach((overlay) => {
+  const popup = overlay.closest('.popup');
+  overlay.addEventListener('click', function(event) {
+    const target = event.target;
+    if (target.classList.contains('overlay')) {
+      closePopup(popup);
+    }
+  });
+})
+
+// универсальный обработчик закрытия попапов при клике на Esc
+function closePopupOnEsc(event) {
+  if (event.keyCode === 27) {
+    const popup = document.querySelector('.popup_opened');
+    closePopup(popup);
+  }
+}
+
+document.addEventListener('keydown', closePopupOnEsc);
 
 /*кнопка добавления новой карточки*/
 const popupAddCardForm = document.querySelector('.popup__form-add')
@@ -82,7 +104,9 @@ function submitCard(evt) {
   const newCard = createCard(cardNameInput.value, cardLinkInput.value);
   cardsSection.prepend(newCard); 
   closePopup(popupAddCard);
+ // createCardButton.setAttribute("disabled", ""); //чтобы атрибут не удалялся после добавления первой карточки
   evt.target.reset();
+  toggleButtonState(createCardButton, popupAddCardForm.checkValidity(), configForm);
 }
 popupAddCardForm.addEventListener('submit', submitCard);
 
@@ -133,7 +157,7 @@ function openCard(event) {
 }
 
 /*открытие попапа при клике на кнопку редактирования профиля*/
-const popupOpenButton = document.querySelector('.profile-info__edit-button');
+const EditPopupOpenButton = document.querySelector('.profile-info__edit-button');
 const editPopup = document.querySelector('.popup-edit');
 const popupUserName = document.getElementById('popup__name');
 const popupUserJob = document.getElementById('popup__job');
@@ -146,10 +170,10 @@ function showEditPopup(popup) {
   popupUserName.value = userName.textContent;
   popupUserJob.value = userJob.textContent;
 }
-popupOpenButton.addEventListener('click',() => showEditPopup(editPopup));
+EditPopupOpenButton.addEventListener('click',() => showEditPopup(editPopup));
   
 /*кнопка сохранить значения попапа*/
-const popupForm = document.querySelector('.popup__form');
+const popupForm = document.querySelector('.popup__form-edit');
 
 function savePopup (evt) {
   evt.preventDefault();

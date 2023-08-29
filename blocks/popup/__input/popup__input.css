@@ -1,4 +1,4 @@
-.popup__inputs-text {
+.popup__input {
   font-family: 'Inter', 'Arial', sans-serif;
   font-size: 14px;
   font-weight: 400;
@@ -12,9 +12,4 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   align-self: center;
   outline: none;
-  margin-bottom: 30px;
-}
-
-.popup__inputs-text:last-of-type {
-  margin-bottom: 48px;
 }
