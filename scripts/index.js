@@ -1,51 +1,17 @@
-/*массив карточек для первоначальной загрузки на страницу*/
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
-  }
-];
+import {Card} from './Card.js';
+import {initialCards} from './CardArray.js';
+import {FormValidation} from './FormValidation.js';
 
 /*загрузка карточек на страницу template*/
 const cardsSection = document.querySelector('.elements');
-const cardTemplate = document.querySelector('.elementTemplate').content;
-
-/*создаем карточку по шаблону*/
-function createCard(name, link) {
-  const newHtmlCard = cardTemplate.cloneNode(true);
-  const cardTitleText = newHtmlCard.querySelector('.element__text'); 
-  newHtmlCard.querySelector('.element__image').src = link;
-  cardTitleText.textContent = name;
-  newHtmlCard.querySelector('.element__image').alt = name;
-  setListenersForCard(newHtmlCard, name, link);
-  return newHtmlCard;
-}
+const cardTemplate = document.querySelector('.elementTemplate');
 
 /*создаем массив карточек по шаблону*/
 const cardArray = initialCards.map(function createCardArray(item) {
-  return createCard(item.name, item.link);
-})
-
+  const card = new Card(item.name, item.link, '.elementTemplate', showImagePopup);
+  return card.createCard();
+});
+  
 /*добавляем массив карточек на страницу*/
 cardsSection.append(...cardArray);
 
@@ -95,44 +61,17 @@ function closePopupOnEsc(event) {
 
 /*кнопка добавления новой карточки*/
 const popupAddCardForm = document.querySelector('.popup__form-add')
-const createCardButton = document.querySelector('.popup__button-create');
 const cardNameInput = document.getElementById('popup__name-card');
 const cardLinkInput = document.getElementById('popup__link-card');
 
 function submitCard(evt) {
   evt.preventDefault();
-  const newCard = createCard(cardNameInput.value, cardLinkInput.value);
-  cardsSection.prepend(newCard);
+  const newCard = new Card(cardNameInput.value, cardLinkInput.value, '.elementTemplate', showImagePopup);
+  cardsSection.prepend(newCard.createCard());
   closePopup(popupAddCard);
- // createCardButton.setAttribute("disabled", ""); //чтобы атрибут не удалялся после добавления первой карточки
   evt.target.reset();
-  toggleButtonState(createCardButton, popupAddCardForm.checkValidity(), configForm);
 }
 popupAddCardForm.addEventListener('submit', submitCard);
-
-function setListenersForCard(card, name, link) {
-  const likeCardBotton = card.querySelector('.element__button-like');
-  likeCardBotton.addEventListener('click', likeCard);
-
-  const deleteCardBotton = card.querySelector('.element__button-delete');
-  deleteCardBotton.addEventListener('click', deleteCard);
-
-  const openCardClick = card.querySelector('.element__image');
-  openCardClick.addEventListener('click', openCard);
-}
-
-/*лайк на карточку*/
-function likeCard(event) {
-  const currentCard = event.target.closest('.element');
-  const likeButtonForCurrentCard = currentCard.querySelector('.element__button-like');
-  likeButtonForCurrentCard.classList.toggle('element__button-like_active');
-}
-  
-/*удаление карточки*/
-function deleteCard(event) {
-  const currentCard = event.target.closest('.element');
-  currentCard.remove();
-}
 
 /*функция, которая открывает и заполняет попап с нужной картинкой*/
 const popupImage = document.querySelector('.popup__image');
@@ -144,16 +83,6 @@ function showImagePopup(popup, imageTitle, imageSrc) {
   popupImage.src = imageSrc;
   popupImage.alt = imageTitle;
   popupImageTitle.textContent = imageTitle;
-}
-  
-/*функция, которая реагирует на клик по картинке чтобы открыть попап с определенной картинкой*/
-const popupOpenImage = document.querySelector('.popup-image');
-
-function openCard(event) {
-  const currentCard = event.target.closest('.element');
-  const currentCardImageSrc = currentCard.querySelector('.element__image').src ;
-  const currentCardImageTitle = currentCard.querySelector('.element__text').textContent;
-  showImagePopup(popupOpenImage, currentCardImageTitle, currentCardImageSrc)
 }
 
 /*открытие попапа при клике на кнопку редактирования профиля*/
@@ -182,3 +111,20 @@ function savePopup (evt) {
   closePopup(editPopup);
 }
 popupEditForm.addEventListener('submit', savePopup);
+
+/*валидация форм*/
+const configForm = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+};
+
+//const formsList = document.querySelectorAll(config.formSelector);
+const formEdit = new FormValidation(configForm, popupEditForm);
+formEdit.enableValidation();
+
+const formAdd = new FormValidation(configForm, popupAddCardForm);
+formAdd.enableValidation();
+
