@@ -1,4 +1,4 @@
-export class FormValidation {
+export class FormValidator {
   constructor(config, form) {
     this._formSelector = config.formSelector;
     this._inputSelector = config.inputSelector;
@@ -6,6 +6,9 @@ export class FormValidation {
     this._inactiveButtonClass = config.inactiveButtonClass;
     this._inputErrorClass = config.inputErrorClass;
     this._form = form;
+
+    this._inputsList = this._form.querySelectorAll(this._inputSelector);
+    this._submitButtonElement = this._form.querySelector(this._submitButtonSelector);
   }
 
   _showError(inputElement, errorElement) {
@@ -41,13 +44,11 @@ export class FormValidation {
   
   //занимается установкой слушателя события
   _setEventListener() {
-    const inputsList = this._form.querySelectorAll(this._inputSelector);
-    const submitButtonElement = this._form.querySelector(this._submitButtonSelector);
-    this._toggleButtonState(submitButtonElement, this._form.checkValidity());
+    this._toggleButtonState(this._submitButtonElement, this._form.checkValidity());
   
-    [...inputsList].forEach((inputElement) => {
+    [...this._inputsList].forEach((inputElement) => {
       inputElement.addEventListener('input', ()=> {
-        this._toggleButtonState(submitButtonElement, this._form.checkValidity());
+        this._toggleButtonState(this._submitButtonElement, this._form.checkValidity());
         this._checkInputValidity(inputElement);
       })
     })
@@ -58,7 +59,7 @@ export class FormValidation {
     this._form.addEventListener('submit', (evt) => evt.preventDefault());
     this._setEventListener();
     this._form.addEventListener('reset', () => {
-      this._toggleButtonState(this._form.querySelector(this._submitButtonSelector), false);
+      this._toggleButtonState(this._submitButtonElement, false);
     })
   };
 }

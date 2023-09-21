@@ -4,11 +4,13 @@ export class Card {
     this._link = link;
     this._template = templateSelector;
     this._showImagePopup = showImagePopup;
+   // this._cardImage = this._newHtmlCard.querySelector('.element__image');
+   // this._cardLikeButton = this._newHtmlCard.querySelector('.element__button-like');
   }
   
   _getTemplate() {
     return document
-      .querySelector('.elementTemplate')
+      .querySelector(this._template)
       .content
       .querySelector('.element')
       .cloneNode(true);
@@ -16,9 +18,11 @@ export class Card {
   
   createCard() {
     this._newHtmlCard = this._getTemplate();
-    this._newHtmlCard.querySelector('.element__image').src = this._link;
+    this._cardImage = this._newHtmlCard.querySelector('.element__image');
+    this._cardLikeButton = this._newHtmlCard.querySelector('.element__button-like');
+    this._cardImage.src = this._link;
     this._newHtmlCard.querySelector('.element__text').textContent = this._name;
-    this._newHtmlCard.querySelector('.element__image').alt = this._name;
+    this._cardImage.alt = this._name;
     this._setListenersForCard();
    //console.log(this._newHtmlCard);
     return this._newHtmlCard;
@@ -26,7 +30,7 @@ export class Card {
   
   _setListenersForCard() {
     //лайк на карточку
-    const likeCardBotton = this._newHtmlCard.querySelector('.element__button-like');
+    const likeCardBotton = this._cardLikeButton;
     likeCardBotton.addEventListener('click',()=> this._likeCard());
 
     //удаление карточки
@@ -34,13 +38,13 @@ export class Card {
     deleteCardBotton.addEventListener('click',()=> this._deleteCard());
 
     //открытие карточки
-    const openCardClick = this._newHtmlCard.querySelector('.element__image');
+    const openCardClick = this._cardImage;
     openCardClick.addEventListener('click', ()=> this._openCard());
 }
   
   /*лайк на карточку*/
   _likeCard() {
-    const likeButtonForCurrentCard = this._newHtmlCard.querySelector('.element__button-like');
+    const likeButtonForCurrentCard = this._cardLikeButton;
     likeButtonForCurrentCard.classList.toggle('element__button-like_active');
   }
     
@@ -50,8 +54,7 @@ export class Card {
   }
 
   _openCard() {
-    const popupImage = document.querySelector('.popup-image');
-    this._showImagePopup(popupImage,this._name, this._link);
+    this._showImagePopup(this._name, this._link);
   }
   
 }
