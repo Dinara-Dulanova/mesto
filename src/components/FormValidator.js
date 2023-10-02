@@ -32,23 +32,23 @@ export class FormValidator {
   }
   
   //переключение состояния кнопки
-  _toggleButtonState(buttonElement, isActive) {
+  _toggleButtonState(isActive) {
     if (isActive) {
-      buttonElement.disabled = false;
-      buttonElement.classList.remove(this._inactiveButtonClass);
+      this._submitButtonElement.disabled = false;
+      this._submitButtonElement.classList.remove(this._inactiveButtonClass);
     } else {
-      buttonElement.disabled = 'disabled';
-      buttonElement.classList.add(this._inactiveButtonClass);
+      this._submitButtonElement.disabled = 'disabled';
+      this._submitButtonElement.classList.add(this._inactiveButtonClass);
     }
   }
   
   //занимается установкой слушателя события
   _setEventListener() {
-    this._toggleButtonState(this._submitButtonElement, this._form.checkValidity());
+    this._toggleButtonState(this._form.checkValidity());
   
     [...this._inputsList].forEach((inputElement) => {
       inputElement.addEventListener('input', ()=> {
-        this._toggleButtonState(this._submitButtonElement, this._form.checkValidity());
+        this._toggleButtonState(this._form.checkValidity());
         this._checkInputValidity(inputElement);
       })
     })
@@ -59,7 +59,7 @@ export class FormValidator {
     this._form.addEventListener('submit', (evt) => evt.preventDefault());
     this._setEventListener();
     this._form.addEventListener('reset', () => {
-      this._toggleButtonState(this._submitButtonElement, false);
+      this._toggleButtonState(false);
     })
   };
 }

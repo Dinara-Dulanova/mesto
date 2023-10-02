@@ -1,9 +1,9 @@
 export class Card {
-  constructor(name, link, templateSelector, showImagePopup) {
+  constructor(name, link, templateSelector, handleCardClick) {
     this._name = name;
     this._link = link;
     this._template = templateSelector;
-    this._showImagePopup = showImagePopup;
+    this.handleCardClick = handleCardClick;
    // this._cardImage = this._newHtmlCard.querySelector('.element__image');
    // this._cardLikeButton = this._newHtmlCard.querySelector('.element__button-like');
   }
@@ -39,7 +39,7 @@ export class Card {
 
     //открытие карточки
     const openCardClick = this._cardImage;
-    openCardClick.addEventListener('click', ()=> this._openCard());
+    openCardClick.addEventListener('click', ()=> this.handleCardClick(this._name, this._link));
 }
   
   /*лайк на карточку*/
@@ -52,9 +52,4 @@ export class Card {
   _deleteCard() {
     this._newHtmlCard.remove();
   }
-
-  _openCard() {
-    this._showImagePopup(this._name, this._link);
-  }
-  
 }
