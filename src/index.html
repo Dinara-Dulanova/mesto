@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MESTO</title>
-  <link rel="stylesheet" href="./pages/index.css">
+  <!-- <link rel="stylesheet" href="./pages/index.css"> -->
 </head>
 <body class="page">
   <header class="header"> 
@@ -14,19 +14,19 @@
   <main class="content">
     <section class="profile">
       <div class="profile-info">
-        <img src="./images/Avatar.png" alt="изображение фотографии пользователя Жака ив Кусто" class="profile-info__avatar">
+        <img src="<%=require('./images/Avatar.png')%>" alt="изображение фотографии пользователя Жака ив Кусто" class="profile-info__avatar">
         <div class="profile-info__description">
           <div class="profile-info__description-user">
             <h1 class="profile-info__name">Жак-Ив Кусто</h1>   
             <p class="profile-info__job">Исследователь океана</p>
           </div>
           <button class="profile-info__edit-button" type="button">
-            <img src="./images/profile_edit_button.svg" alt="изображение карандаша для редактирования профиля" class="profile-info__edit-icon">
+            <img src="<%=require('./images/profile_edit_button.svg')%>" alt="изображение карандаша для редактирования профиля" class="profile-info__edit-icon">
           </button>
         </div>
       </div>
       <button class="profile__add-button" type="button">
-        <img src="./images/plus_button.svg" alt="кнопка плюс" class="profile__plus-icon">
+        <img src="<%=require('./images/plus_button.svg')%>" alt="кнопка плюс" class="profile__plus-icon">
       </button>
     </section>
 
@@ -40,7 +40,7 @@
   <div class="popup popup-edit overlay ">
     <div class="popup__container">
       <button class="popup__close popup__close_edit" type="button">
-        <img src="./images/Close_popup.svg" alt="Крестик для закрытия модального окна редактирования профиля" class="popup__close-img">
+        <img src="<%=require('./images/Close_popup.svg')%>" alt="Крестик для закрытия модального окна редактирования профиля" class="popup__close-img">
       </button>
       <h3 class="popup__title">Редактировать профиль</h3>
       <form name="form-edit" class="popup__form popup__form-edit" novalidate>
@@ -56,7 +56,7 @@
   <div class="popup popup-add overlay">
     <div class="popup__container">
       <button class="popup__close popup__close_add-card" type="button">
-        <img src="./images/Close_popup.svg" alt="Крестик для закрытия модального окна редактирования профиля" class="popup__close-img">
+        <img src="<%=require('./images/Close_popup.svg')%>" alt="Крестик для закрытия модального окна редактирования профиля" class="popup__close-img">
       </button>
       <h3 class="popup__title">Новое место</h3>
       <form name="form-add" class="popup__form popup__form-add" novalidate>
@@ -72,7 +72,7 @@
   <div class="popup popup-image overlay">
     <div class="popup-image__container">
       <button class="popup__close popup__close_open-card" type="button">
-        <img src="./images/Close_popup.svg" alt="Крестик для закрытия модального окна редактирования профиля" class="popup__close-img">
+        <img src="<%=require('./images/Close_popup.svg')%>" alt="Крестик для закрытия модального окна редактирования профиля" class="popup__close-img">
       </button>
       <img class="popup__image">
       <div class="popup__image-title"></div>
@@ -90,6 +90,6 @@
     </div>
   </template>
   
- <script type="module" src="./pages/index.js" defer></script>
+ <!--<script type="module" src="./pages/index.js" defer></script>-->
 </body>
 </html>

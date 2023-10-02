@@ -1,10 +1,13 @@
+import {initialCards, popupAddCardOpenButton, popupAddCardForm, editPopupOpenButton, popupUserName, popupUserJob, popupEditForm} from '../utils/constants.js';
+
 import {Card} from '../components/Card.js';
-import {initialCards} from '../components/CardArray.js';
 import {FormValidator} from '../components/FormValidator.js';
 import {Section} from '../components/Section.js';
 import {PopupWithImage} from '../components/PopupWithImage.js';
 import {PopupWithForm} from '../components/PopupWithForm.js';
 import {UserInfo} from '../components/UserInfo.js';
+
+import './index.css';
 
 //функция создания экземпляра карточки
 function createCard(name, link) {
@@ -15,21 +18,6 @@ function createCard(name, link) {
   });
   return card.createCard();
 }
-
-/*открытие попапа при клике на кнопку для добавления карточки*/
-const popupAddCardOpenButton = document.querySelector('.profile__add-button');
-
-/*для добавления новой карточки*/
-const popupAddCardForm = document.querySelector('.popup__form-add')
-
-/*открытие попапа при клике на кнопку редактирования профиля*/
-const editPopupOpenButton = document.querySelector('.profile-info__edit-button');
-const editPopup = document.querySelector('.popup-edit');
-const popupUserName = document.getElementById('popup__name');
-const popupUserJob = document.getElementById('popup__job');
-
-//кнопка сохранить значения попапа
-const popupEditForm = editPopup.querySelector('.popup__form-edit');
 
 /*валидация форм*/
 const configForm = {
