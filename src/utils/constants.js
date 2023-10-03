@@ -39,3 +39,10 @@ export const popupUserJob = document.getElementById('popup__job');
 //кнопка сохранить значения попапа
 const editPopup = document.querySelector('.popup-edit');
 export const popupEditForm = editPopup.querySelector('.popup__form-edit');
+
+export const configForm = {
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+};

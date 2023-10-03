@@ -1,4 +1,4 @@
-import {initialCards, popupAddCardOpenButton, popupAddCardForm, editPopupOpenButton, popupUserName, popupUserJob, popupEditForm} from '../utils/constants.js';
+import {initialCards, configForm, popupAddCardOpenButton, popupAddCardForm, editPopupOpenButton, popupUserName, popupUserJob, popupEditForm} from '../utils/constants.js';
 
 import {Card} from '../components/Card.js';
 import {FormValidator} from '../components/FormValidator.js';
@@ -9,25 +9,18 @@ import {UserInfo} from '../components/UserInfo.js';
 
 import './index.css';
 
+const imagePopup = new PopupWithImage('.popup-image'); //функция для открытия попапа с картинкой этой карточки
+imagePopup.setEventListeners();
+
 //функция создания экземпляра карточки
 function createCard(name, link) {
-  const imagePopup = new PopupWithImage('.popup-image'); //функция для открытия попапа с картинкой этой карточки
-  imagePopup.setEventListeners();
-  const card = new Card(name, link, '.elementTemplate', () => {
-    imagePopup.open(name, link);
+  const card = new Card(name, link, '.elementTemplate', (cardName, cardLink) => {
+    imagePopup.open(cardName, cardLink);
   });
   return card.createCard();
 }
 
 /*валидация форм*/
-const configForm = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-};
-
 //валидация формы редактирования профиля
 const formEditValidator = new FormValidator(configForm, popupEditForm);
 formEditValidator.enableValidation();
@@ -67,11 +60,12 @@ const profileEditPopup = new PopupWithForm('.popup-edit', (item) => {
 profileEditPopup.setEventListeners();
 editPopupOpenButton.addEventListener('click',() => {
   profileEditPopup.open();
-  getUserInfo(); //функция, которая заполняет попап данными пользователя с помошью метода класса UserInfo
+  fillPopupUserInputs(); //функция, которая заполняет попап данными пользователя с помошью метода класса UserInfo
 });
 
 //функция для получения и заполнения полей имени и рода деятельности юзера, чтобы заполнить при открытии попапа редактирования проф
-function getUserInfo () {
-  popupUserName.value = user.getUserInfo().name.textContent;
-  popupUserJob.value = user.getUserInfo().about.textContent;
+const userNameAndAbout = user.getUserInfo();
+function fillPopupUserInputs () {
+  popupUserName.value = userNameAndAbout.name.textContent;
+  popupUserJob.value = userNameAndAbout.about.textContent;
 }

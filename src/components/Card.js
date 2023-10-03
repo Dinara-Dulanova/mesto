@@ -3,9 +3,7 @@ export class Card {
     this._name = name;
     this._link = link;
     this._template = templateSelector;
-    this.handleCardClick = handleCardClick;
-   // this._cardImage = this._newHtmlCard.querySelector('.element__image');
-   // this._cardLikeButton = this._newHtmlCard.querySelector('.element__button-like');
+    this._handleCardClick = handleCardClick;
   }
   
   _getTemplate() {
@@ -39,7 +37,7 @@ export class Card {
 
     //открытие карточки
     const openCardClick = this._cardImage;
-    openCardClick.addEventListener('click', ()=> this.handleCardClick(this._name, this._link));
+    openCardClick.addEventListener('click', ()=> this._handleCardClick(this._name, this._link));
 }
   
   /*лайк на карточку*/
