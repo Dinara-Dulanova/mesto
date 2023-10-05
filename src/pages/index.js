@@ -64,8 +64,9 @@ editPopupOpenButton.addEventListener('click',() => {
 });
 
 //функция для получения и заполнения полей имени и рода деятельности юзера, чтобы заполнить при открытии попапа редактирования проф
-const userNameAndAbout = user.getUserInfo();
+
 function fillPopupUserInputs () {
+  const userNameAndAbout = user.getUserInfo();
   popupUserName.value = userNameAndAbout.name.textContent;
   popupUserJob.value = userNameAndAbout.about.textContent;
 }
