@@ -1,16 +1,17 @@
 export class Section {
-  constructor({ items, renderer }, selector) {
-    this._renderedItems = items;
+  constructor({renderer}, selector) {
     this._renderer = renderer;
     this._container = document.querySelector(selector);
   }
 
-  renderItems() {
-    this._renderedItems.forEach(this._renderer); //отрисовка элементов
+  renderItems(items) {
+    items.forEach(item => { //отрисовка элементов
+      this._renderer(item); 
+    })
+    //this._renderedItems.forEach(this._renderer); 
   }
 
   addItem(element) {
-   //console.log(element);
-   this._container.prepend(element); //принимает DOM-элемент и добавляет его в контейнер
+   this._container.append(element); //принимает DOM-элемент и добавляет его в контейнер
   }
 }
