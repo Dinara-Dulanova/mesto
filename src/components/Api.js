@@ -35,26 +35,56 @@ export class Api {
     return fetch(`${this._url}/cards/`, {
       headers: this._headers,
       method: 'POST',
-      body: JSON.stringify({name,link})
+      body: JSON.stringify({name, link})
     })
     .then((response) => onError(response))
   }
 
   //редактирование профиля
-  /*
-  userInfoEdit () {
-    fetch(`${this._url}/users/me/`, {
+  userInfoEdit ({name, about}) {
+    return fetch(`${this._url}/users/me/`, {
       method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: 'Marie Skłodowska Curie',
-        about: 'Physicist and Chemist'
-      })
+      headers: this._headers,
+      body: JSON.stringify({name, about})
     })
     .then((response) => onError(response))
-  } */
+  }
+
+  //удаление карточки
+  deleteCard (cardId) {
+    return fetch(`${this._url}/cards/${cardId}`, {
+        method: 'DELETE',
+        headers: this._headers,
+    })
+    .then((response) => onError(response))
+  }
+
+  //лайк на карточку
+  putLike (cardId) {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
+        method: 'PUT',
+        headers: this._headers,
+    })
+    .then((response) => onError(response))
+  }
+
+  deleteLike (cardId) {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
+        method: 'DELETE',
+        headers: this._headers,
+    })
+    .then((response) => onError(response))
+  }
+
+  //изменить аватар
+  changeAvatar (avatarUrl) {
+    return fetch(`${this._url}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({avatar: avatarUrl})
+    })
+    .then((response) => onError(response));
+    }
 
 
 }

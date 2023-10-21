@@ -13,7 +13,7 @@
   <main class="content">
     <section class="profile">
       <div class="profile-info">
-        <img src="<%=require('./images/Avatar.png')%>" alt="изображение фотографии пользователя Жака ив Кусто" class="profile-info__avatar">
+        <img src="<%=require('./images/Avatar.png')%>" alt="изображение фотографии пользователя" class="profile-info__avatar">
         <div class="profile-info__description">
           <div class="profile-info__description-user">
             <h1 class="profile-info__name"></h1>   
@@ -68,6 +68,20 @@
     </div>
   </div>
 
+  <div class="popup popup-avatar overlay">
+    <div class="popup__container">
+      <button class="popup__close popup__close_avatar" type="button">
+        <img src="<%=require('./images/Close_popup.svg')%>" alt="Крестик для закрытия модального окна редактирования профиля" class="popup__close-img">
+      </button>
+      <h3 class="popup__title">Обновить аватар</h3>
+      <form name="form-avatar" class="popup__form popup__form-avatar" novalidate>
+        <input name="avatar" type="url" id="popup__link-avatar" class="popup__input" value="" placeholder="Ссылка на фотографию профиля" required>
+        <span id="avatar-error" class="error"></span>
+        <button class="popup__button popup__button-save popup__button-text" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
   <div class="popup popup-image overlay">
     <div class="popup-image__container">
       <button class="popup__close popup__close_open-card" type="button">
@@ -78,12 +92,27 @@
     </div>
   </div>
 
+  <div class="popup popup-confirm__delete_card overlay">
+    <div class="popup__container">
+      <button class="popup__close popup__close_confirm-delete" type="button">
+        <img src="<%=require('./images/Close_popup.svg')%>" alt="Крестик для закрытия модального окна редактирования профиля" class="popup__close-img">
+      </button>
+      <h3 class="popup__title">Вы уверены?</h3>
+      <form name="form-confirm" class="popup__form popup__form-confirm" novalidate>
+        <button class="popup__button popup__button-confirm popup__button-text" type="submit">Да</button>
+      </form>
+    </div>
+  </div>
+
   <template class="elementTemplate">
     <div class="element">
       <img class="element__image">
       <div class="element__title">
         <h2 class="element__text"></h2>
-        <button class="element__button-like" type="button"></button>
+        <div class="element__like">
+          <button class="element__button-like" type="button"></button>
+          <p class="element__count-like">0</p>
+        </div>
       </div>
       <button class="element__button-delete" type="button"></button>
     </div>

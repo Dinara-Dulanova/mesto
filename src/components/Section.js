@@ -6,12 +6,13 @@ export class Section {
 
   renderItems(items) {
     items.forEach(item => { //отрисовка элементов
+      //console.log(item);
       this._renderer(item); 
     })
     //this._renderedItems.forEach(this._renderer); 
   }
 
-  addItem(element) {
-   this._container.append(element); //принимает DOM-элемент и добавляет его в контейнер
+  addItem(item) {
+    this._container.append(item); //принимает DOM-элемент и добавляет его в контейнер
   }
 }

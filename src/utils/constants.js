@@ -36,6 +36,9 @@ export const editPopupOpenButton = document.querySelector('.profile-info__edit-b
 export const popupUserName = document.getElementById('popup__name');
 export const popupUserJob = document.getElementById('popup__job');
 
+//кнопка открытия попапа редактирования аватара
+export const editAvatarPopupOpenButton = document.querySelector('.profile-info__avatar');
+
 //кнопка сохранить значения попапа
 const editPopup = document.querySelector('.popup-edit');
 export const popupEditForm = editPopup.querySelector('.popup__form-edit');
