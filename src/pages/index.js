@@ -20,7 +20,7 @@ const api = new Api(
 );
 
 //попап подверждения удаления карточки
-const cardDeletePopup = new PopupConfirm('.popup-confirm__delete_card', (cardId, card)=> {
+const cardDeletePopup = new PopupConfirm('.popup-confirmDelete', (cardId, card)=> {
   api.deleteCard(cardId)
     .then(() => 
       {
