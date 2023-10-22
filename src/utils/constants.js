@@ -43,6 +43,8 @@ export const editAvatarPopupOpenButton = document.querySelector('.profile-info__
 const editPopup = document.querySelector('.popup-edit');
 export const popupEditForm = editPopup.querySelector('.popup__form-edit');
 
+export const popupEditAvatarForm = document.querySelector('.popup__form-avatar');
+
 export const configForm = {
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__button',

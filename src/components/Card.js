@@ -36,7 +36,6 @@ export class Card {
     //удаление чужих корзин
     if (this._cardOwnerId !== this._ownerId) {
       this._trashElement.remove();
-      //console.log(this._trashElement);
     }
 
     //отображение лайка и закрашивание кнопки
@@ -50,7 +49,7 @@ export class Card {
   _setListenersForCard() {
     //лайк на карточку
     const likeCardBotton = this._cardLikeButton;
-    likeCardBotton.addEventListener('click',()=> this._likeCard());
+    likeCardBotton.addEventListener('click',()=> this._handleLikeClick());
 
     //console.log(this._trashElement);
     //удаление карточки
@@ -65,8 +64,6 @@ export class Card {
   
 
   renderLikes() {
-    //console.log('render');
-    
     this._cardLikesCountElement = this._newHtmlCard.querySelector('.element__count-like');
     this._cardLikesCountElement.textContent = this._likesArray.length;
     if (this._likesArray.some(like => like._id === this._ownerId)) {
@@ -76,63 +73,12 @@ export class Card {
       this._cardLikeButton.classList.remove('element__button-like_active');
       this._isLiked = false;
     }
-    /*
-    this._cardLikesCountElement = this._newHtmlCard.querySelector('.element__count-like');
-    this._cardLikesCountElement.textContent = this._likesArray.length;
-
-    if (this._likesArray.some(like => like._id === this._ownerId)) {
-      this._cardLikeButton.classList.add('element__button-like_active');
-    } else {
-      this._cardLikeButton.classList.remove('element__button-like_active');
-    } */
   }
-
-  /*
-  isLiked() {
-    const isLikedByUser = this._likesArray.some((like) => {
-      console.log(this._ownerId);
-      return like._id === this._ownerId;
-    });
-
-    if (isLikedByUser) {
-      this._isLiked = true;
-      return true;
-    } else {
-      this._isLiked = false;
-      return false;
-    }
-  }  /*
-  /*лайк на карточку*/
 
   isLiked() {
     return this._isLiked;
   }
-  
-  _likeCard() {
-    this._handleLikeClick();
-    /*
-    const isLiked = this.isLiked();
-    
-    const method = isLiked ? 'DELETE' : 'PUT';
-    const apiMethod = isLiked ? this._api.deleteLike : this._api.putLike;
-  
-    apiMethod(this._cardId)
-      .then((res) => {
-        this._likesArray = res.likes;
-        this._updateLikes();
-      })
-      .catch((err) => {
-        console.log(err);
-      }); */
-  }
-  
-  /*
-  _likeCard() {
-    this._handleLikeClick()
-    const likeButtonForCurrentCard = this._cardLikeButton;
-    likeButtonForCurrentCard.classList.add('element__button-like_active');
-  } /*
-    
+
   /*удаление карточки*/
   removeCard() {
     this._newHtmlCard.remove();
