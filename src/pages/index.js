@@ -46,6 +46,28 @@ cardDeletePopup.setEventListeners();
 const imagePopup = new PopupWithImage('.popup-image'); //функция для открытия попапа с картинкой этой карточки
 imagePopup.setEventListeners();
 
+//функция обработки лайков (put и delete на сервер, отрисовка на странице)
+function handleLikeClick (card, cardId) {
+  console.log(card);
+  if (card.isLiked()) {
+    api.deleteLike(cardId)
+    .then ((data) => {
+      card.renderLikes(data.likes);
+    })
+    .catch((error) => {
+      console.log('Ошибка запроса удаления лайка с карточки', error);
+    }); 
+  } else {
+    api.putLike(cardId)
+    .then ((data) => {
+      card.renderLikes(data.likes);
+    })
+    .catch((error) => {
+      console.log('Ошибка запроса добавления лайка на карточку', error);
+    });
+  }
+}
+
 //функция создания экземпляра карточки
 function createCard(item) {
   const card = new Card( { name: item.name, link: item.link, likesArray: item.likes, cardId: item._id, cardOwnerId: item.owner._id,
@@ -56,25 +78,7 @@ function createCard(item) {
   () => {  //колбэк функция открытия попапа удаления карточки (которую передаем в Card)
     cardDeletePopup.open(item._id, card);
   },
-  () => { 
-    if (card.isLiked()) {
-      api.deleteLike(item._id)
-      .then ((data) => {
-        card.renderLikes(data.likes);
-      })
-      .catch((error) => {
-        console.log('Ошибка запроса удаления лайка с карточки', error);
-      }); 
-    } else {
-      api.putLike(item._id)
-      .then ((data) => {
-        card.renderLikes(data.likes);
-      })
-      .catch((error) => {
-        console.log('Ошибка запроса добавления лайка на карточку', error);
-      });
-    }
-  } //колбэк функция обработки лайков 
+  () => handleLikeClick(card, item._id) //колбэк функция обработки лайков 
   );
   return card.createCard();
 }
