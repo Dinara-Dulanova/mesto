@@ -15,4 +15,8 @@ export class Section {
   addItem(item) {
     this._container.append(item); //принимает DOM-элемент и добавляет его в контейнер
   }
+
+  addNewItem(item) {
+    this._container.prepend(item); //принимает DOM-элемент и добавляет его в контейнер
+  }
 }

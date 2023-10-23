@@ -1,24 +1,24 @@
-const onError = (response) => {
-  if (response.ok) {
-    return response.json();
-  } else {
-    return Promise.reject(`Ошибка ${response.status} ${response.statusText}`);
-  }
-}
-
 export class Api {
   constructor(url, headers) {
     this._url = url;
     this._headers = headers;
   }
-
+  
+  _getResponse (response) {
+    if (response.ok) {
+      return response.json();
+    } else {
+      return Promise.reject(`Ошибка ${response.status} ${response.statusText}`);
+    }
+  }
+  
   //Загрузка информации о пользователе с сервера
   getUserInfo () {
     return fetch(`${this._url}/users/me/`, {
       headers: this._headers,
       method: 'GET',
     })
-    .then((response) => onError(response))
+    .then((response) => this._getResponse(response))
   }
 
   //загрузка карточек с сервера
@@ -27,7 +27,7 @@ export class Api {
         headers: this._headers,
         method: 'GET',
       })
-      .then((response) => onError(response))
+      .then((response) => this._getResponse(response))
   }
 
   //добавление карточки
@@ -37,7 +37,7 @@ export class Api {
       method: 'POST',
       body: JSON.stringify({name, link})
     })
-    .then((response) => onError(response))
+    .then((response) => this._getResponse(response))
   }
 
   //редактирование профиля
@@ -47,7 +47,7 @@ export class Api {
       headers: this._headers,
       body: JSON.stringify({name, about})
     })
-    .then((response) => onError(response))
+    .then((response) => this._getResponse(response))
   }
 
   //удаление карточки
@@ -56,7 +56,7 @@ export class Api {
         method: 'DELETE',
         headers: this._headers,
     })
-    .then((response) => onError(response))
+    .then((response) => this._getResponse(response))
   }
 
   //лайк на карточку
@@ -65,7 +65,7 @@ export class Api {
         method: 'PUT',
         headers: this._headers,
     })
-    .then((response) => onError(response))
+    .then((response) => this._getResponse(response))
   }
 
   deleteLike (cardId) {
@@ -73,7 +73,7 @@ export class Api {
         method: 'DELETE',
         headers: this._headers,
     })
-    .then((response) => onError(response))
+    .then((response) => this._getResponse(response))
   }
 
   //изменить аватар
@@ -83,8 +83,6 @@ export class Api {
       headers: this._headers,
       body: JSON.stringify({avatar: avatarUrl})
     })
-    .then((response) => onError(response));
-    }
-
-
+    .then((response) => this._getResponse(response));
+  }
 }

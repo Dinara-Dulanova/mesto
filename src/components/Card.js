@@ -39,8 +39,7 @@ export class Card {
     }
 
     //отображение лайка и закрашивание кнопки
-    this.renderLikes();
-    
+    this.renderLikes(this._likesArray);
     this._setListenersForCard();
     
     return this._newHtmlCard;
@@ -51,7 +50,6 @@ export class Card {
     const likeCardBotton = this._cardLikeButton;
     likeCardBotton.addEventListener('click',()=> this._handleLikeClick());
 
-    //console.log(this._trashElement);
     //удаление карточки
     //const deleteCardBotton = this._newHtmlCard.querySelector('.element__button-delete');
     this._trashElement.addEventListener('click',()=> this._cardDeleteConfirm());
@@ -63,10 +61,10 @@ export class Card {
   //проверка лайкнута карточка или нет
   
 
-  renderLikes() {
+  renderLikes(arr) {
     this._cardLikesCountElement = this._newHtmlCard.querySelector('.element__count-like');
-    this._cardLikesCountElement.textContent = this._likesArray.length;
-    if (this._likesArray.some(like => like._id === this._ownerId)) {
+    this._cardLikesCountElement.textContent = arr.length;
+    if (arr.some(like => like._id === this._ownerId)) {
       this._cardLikeButton.classList.add('element__button-like_active');
       this._isLiked = true;
     } else {

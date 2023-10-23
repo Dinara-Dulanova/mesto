@@ -1,30 +1,3 @@
-export const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
-  }
-];
-
 /*открытие попапа при клике на кнопку для добавления карточки*/
 export const popupAddCardOpenButton = document.querySelector('.profile__add-button');
 
@@ -37,7 +10,8 @@ export const popupUserName = document.getElementById('popup__name');
 export const popupUserJob = document.getElementById('popup__job');
 
 //кнопка открытия попапа редактирования аватара
-export const editAvatarPopupOpenButton = document.querySelector('.profile-info__avatar');
+//export const editAvatarPopupOpenButton = document.querySelector('.profile-info__avatar');
+export const editAvatarPopupOpenButton = document.querySelector('.profile-info__avatar-container');
 
 //кнопка сохранить значения попапа
 const editPopup = document.querySelector('.popup-edit');

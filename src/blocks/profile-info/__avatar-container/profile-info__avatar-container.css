@@ -1,0 +1,14 @@
+.profile-info__avatar-container {
+  position: relative;
+  width: 120px;
+  min-height: 120px;
+  border-radius: 50%;
+}
+
+.profile-info__avatar-container:hover .profile-info__avatarEdit-icon {
+  opacity: 1;
+}
+
+.profile-info__avatar-container:hover .profile-info__avatar {
+  opacity: 0.8;
+}

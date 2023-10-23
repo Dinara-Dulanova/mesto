@@ -1,15 +1,13 @@
-.profile-info__avatar {
-  width: 100%;
-  height: 100%;
+.profile-info__avatarEdit-icon {
   border-radius: 50%;
   margin: 0;
   padding: 0;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 47px;
+  left: 47px;
   transition: opacity 0.3ms;
-}
-
-.profile-info__avatar:hover {
+  width: 26px;
+  height: 26px;
   opacity: 0;
+  overflow: visible;
 }
