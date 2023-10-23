@@ -48,7 +48,6 @@ imagePopup.setEventListeners();
 
 //функция обработки лайков (put и delete на сервер, отрисовка на странице)
 function handleLikeClick (card, cardId) {
-  console.log(card);
   if (card.isLiked()) {
     api.deleteLike(cardId)
     .then ((data) => {
