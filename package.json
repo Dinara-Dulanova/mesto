@@ -6,6 +6,7 @@
   "dependencies": {
     "core-js": "^3.33.0"
   },
+  "homepage": "https://dinara-dulanova.github.io/mesto", 
   "devDependencies": {
     "@babel/core": "^7.23.0",
     "@babel/preset-env": "^7.22.20",
